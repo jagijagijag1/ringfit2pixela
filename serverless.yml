@@ -1,0 +1,45 @@
+service: ringfit2pixela
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+frameworkVersion: '>=1.28.0 <2.0.0'
+
+provider:
+  name: aws
+  runtime: go1.x
+  region: ap-northeast-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "rekognition:DetectText"
+      Resource: "*"
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+functions:
+  ringfit2pixela:
+    handler: bin/ringfit2pixela
+    events:
+      - http:
+          path: ringfit2pixela
+          method: post
+    environment:
+      TZ: Asia/Tokyo
+      PIXELA_USER: <user-id>
+      PIXELA_TOKEN: <your-token>
+      PIXELA_ACTTIME_GRAPH: <your-graph-id>
+      PIXELA_CAL_GRAPH: <your-graph-id>
+      PIXELA_DIST_GRAPH: <your-graph-id>
+    timeout: 60
