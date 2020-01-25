@@ -3,8 +3,7 @@
 Transfer your [Ring Fit Adventure](https://ringfitadventure.nintendo.com/) records to a [Pixela](https://pixe.la/) graph.
 
 ![overview](./docs/ringfit2pixela.png "arch")
-1. You take screenshot(s) of your daily log (like the below) and tweet them with specific hashtag<br>
-  <img src="https://pbs.twimg.com/media/EPGVAVAUUAEVFM3.jpg" width=40%>
+1. You take screenshot(s) of your daily log (like the below) and tweet them with specific hashtag<br><img src="https://pbs.twimg.com/media/EPGVAVAUUAEVFM3.jpg" width=40%>
 2. IFTTT capture the tweet and execute a Lambda function via API Gateway
 3. The Lambda function will get image, detect text with Rekognition, and then record the extracted info to pixela graph
 
