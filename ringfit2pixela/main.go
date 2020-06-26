@@ -13,13 +13,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/PuerkitoBio/goquery"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/rekognition"
+	"github.com/dghubble/go-twitter/twitter"
 	pixela "github.com/gainings/pixela-go-client"
+	"golang.org/x/oauth2"
+	"golang.org/x/oauth2/clientcredentials"
 )
 
 // Point is left & top positions of bounding box in the Rekognition result
@@ -101,36 +103,39 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 }
 
 func getImageURL(url string) ([]string, error) {
-	const TargetProp = "og:image"
 	imgURLs := []string{}
 
-	res, err := http.Get(url)
+	// var tweetID int64 = 1273102676859981824
+	tweetIDStr := url[strings.LastIndex(url, "/")+1:]
+	tweetID, err := strconv.ParseInt(tweetIDStr, 10, 64)
 	if err != nil {
 		return imgURLs, err
 	}
 
-	defer res.Body.Close()
+	consumerKey := os.Getenv("TWITTER_CONSUMER_KEY")
+	consumerSecret := os.Getenv("TWITTER_CONSUMER_SECRET_KEY")
 
-	doc, err := goquery.NewDocumentFromReader(res.Body)
-	if err != nil {
-		return imgURLs, err
+	config := &clientcredentials.Config{
+		ClientID:     consumerKey,
+		ClientSecret: consumerSecret,
+		TokenURL:     "https://api.twitter.com/oauth2/token",
 	}
+	httpClient := config.Client(oauth2.NoContext)
+	client := twitter.NewClient(httpClient)
 
-	doc.Find("meta").Each(func(i int, s *goquery.Selection) {
-		p, e := s.Attr("property")
-		if e && p == TargetProp {
-			imgURL, _ := s.Attr("content")
-			imgURLs = append(imgURLs, imgURL)
-		}
-	})
+	statusShowParams := &twitter.StatusShowParams{}
+	tweet, _, _ := client.Statuses.Show(tweetID, statusShowParams)
+	// fmt.Printf("STATUSES SHOW:\n%+v\n", tweet.ExtendedEntities)
+
+	for _, m := range tweet.ExtendedEntities.Media {
+		imgURLs = append(imgURLs, m.MediaURLHttps+":large")
+	}
 
 	if len(imgURLs) == 0 {
-		err = errors.New("no image url in input url")
-	} else {
-		err = nil
+		return imgURLs, errors.New("no image url in input url")
 	}
 
-	return imgURLs, err
+	return imgURLs, nil
 }
 
 func getImage(url string) ([]byte, error) {

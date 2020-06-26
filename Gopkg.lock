@@ -2,23 +2,7 @@
 
 
 [[projects]]
-  digest = "1:439bfb51db599cd80766736b93b3d10e9314361197ada0b1209a51627a00ccd5"
-  name = "github.com/PuerkitoBio/goquery"
-  packages = ["."]
-  pruneopts = ""
-  revision = "2d2796f41742ece03e8086188fa4db16a3a0b458"
-  version = "v1.5.0"
-
-[[projects]]
-  digest = "1:99bb098027ff0bffd40e1c95c7bf34726d1e422b4d5e421f14c5f96d28b9035b"
-  name = "github.com/andybalholm/cascadia"
-  packages = ["."]
-  pruneopts = ""
-  revision = "b69f6c92dfc187ebfe3914df716c2647a3af0ba0"
-  version = "v1.1.0"
-
-[[projects]]
-  digest = "1:d37b5cbae31a6d3685931cdb7d355e650a5dcb265dc340b57b6f17158234bd38"
+  digest = "1:521af582814888f02988ac3a8f258577b651f3a6283ebd3a9adacc6419599cdf"
   name = "github.com/aws/aws-lambda-go"
   packages = [
     "events",
@@ -28,11 +12,11 @@
     "lambdacontext",
   ]
   pruneopts = ""
-  revision = "b5b7267d297de263cc5b61f8c37543daa9c95ffd"
-  version = "v1.13.3"
+  revision = "c67fadea00272ce2b8227d4ca900da882b290694"
+  version = "v1.17.0"
 
 [[projects]]
-  digest = "1:0cb8afa559640712d9f9c9e4cd2b1ac93ae9691e46071380d3721b219487f676"
+  digest = "1:6c39ee5d6e8f67b6aa363261edb71285ade27e0dc3ad71346b155308de3dda0d"
   name = "github.com/aws/aws-sdk-go"
   packages = [
     "aws",
@@ -53,6 +37,7 @@
     "aws/request",
     "aws/session",
     "aws/signer/v4",
+    "internal/context",
     "internal/ini",
     "internal/sdkio",
     "internal/sdkmath",
@@ -60,6 +45,7 @@
     "internal/sdkuri",
     "internal/shareddefaults",
     "internal/strings",
+    "internal/sync/singleflight",
     "private/protocol",
     "private/protocol/json/jsonutil",
     "private/protocol/jsonrpc",
@@ -72,8 +58,32 @@
     "service/sts/stsiface",
   ]
   pruneopts = ""
-  revision = "6c32c9957b355491e82635c1d318e7614a997428"
-  version = "v1.28.9"
+  revision = "5824358b3a72378a507a6cfa3298c424957161bb"
+  version = "v1.32.10"
+
+[[projects]]
+  digest = "1:27a44a693abe815173ff862b763f95ccc228dd788fbfb71d7d15699048b49d74"
+  name = "github.com/cenkalti/backoff"
+  packages = ["."]
+  pruneopts = ""
+  revision = "18fe4ce5a8550e0d0919b680ad3c080a5455bddf"
+  version = "v4.0.2"
+
+[[projects]]
+  branch = "master"
+  digest = "1:20d3b9c0a7d8ffe041605b43c1975b7c121d0bf1402b24d88bc3649d5d74c123"
+  name = "github.com/dghubble/go-twitter"
+  packages = ["twitter"]
+  pruneopts = ""
+  revision = "39e5462e111ffe165c62a88e2c25e1c1d1085bdb"
+
+[[projects]]
+  digest = "1:8a7970acc52fbdc197f906b6bfb3c1984db9add3b825ee826b9bba1a7a1f6a19"
+  name = "github.com/dghubble/sling"
+  packages = ["."]
+  pruneopts = ""
+  revision = "5a2946623f885d0cfcd7085b039baec12ad53fdd"
+  version = "v1.3.0"
 
 [[projects]]
   digest = "1:9c731354a552a76734547b8fa7497a4c60b8b9740ba3b996c295fe64e43846ee"
@@ -84,6 +94,22 @@
   version = "v0.0.1"
 
 [[projects]]
+  digest = "1:02c7a8570f619bdb5620e8f6a16407455c8e63433d8a9e829f618813dc7f89a5"
+  name = "github.com/golang/protobuf"
+  packages = ["proto"]
+  pruneopts = ""
+  revision = "d04d7b157bb510b1e0c10132224b616ac0e26b17"
+  version = "v1.4.2"
+
+[[projects]]
+  digest = "1:cea4aa2038169ee558bf507d5ea02c94ca85bcca28a4c7bb99fd59b31e43a686"
+  name = "github.com/google/go-querystring"
+  packages = ["query"]
+  pruneopts = ""
+  revision = "44c6ddd0a2342c386950e880b658017258da92fc"
+  version = "v1.0.0"
+
+[[projects]]
   digest = "1:13fe471d0ed891e8544eddfeeb0471fd3c9f2015609a1c000aefdedf52a19d40"
   name = "github.com/jmespath/go-jmespath"
   packages = ["."]
@@ -92,26 +118,91 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:bce1fb1dafa615413d845819aa75ba69d0979cdc2ac3b840e1c19c802a737916"
+  digest = "1:7eda7d644a17fb7b92ee14148fa58ca0ce24ca42a35c0b67fb5a13745d13197e"
   name = "golang.org/x/net"
   packages = [
-    "html",
-    "html/atom",
+    "context",
+    "context/ctxhttp",
   ]
   pruneopts = ""
-  revision = "6afb5195e5aab057fda82e27171243402346b0ad"
+  revision = "4c5254603344ea4a8ae4bed7e296a9588303e14f"
+
+[[projects]]
+  branch = "master"
+  digest = "1:571c7f844acf3c916ac5997f82f227c49a38490f1fca65afd47d64d188ced96e"
+  name = "golang.org/x/oauth2"
+  packages = [
+    ".",
+    "clientcredentials",
+    "internal",
+  ]
+  pruneopts = ""
+  revision = "bf48bf16ab8d622ce64ec6ce98d2c98f916b6303"
+
+[[projects]]
+  digest = "1:2724bc9a6f84121903b6e33edc295b8182a95bb36535244fe2477ae64ba17654"
+  name = "google.golang.org/appengine"
+  packages = [
+    "internal",
+    "internal/base",
+    "internal/datastore",
+    "internal/log",
+    "internal/remote_api",
+    "internal/urlfetch",
+    "urlfetch",
+  ]
+  pruneopts = ""
+  revision = "553959209a20f3be281c16dd5be5c740a893978f"
+  version = "v1.6.6"
+
+[[projects]]
+  digest = "1:0d049ff01749ce1d6092c85cb90a02dfdb3b401939b13415b7e608f36bc8ecee"
+  name = "google.golang.org/protobuf"
+  packages = [
+    "encoding/prototext",
+    "encoding/protowire",
+    "internal/descfmt",
+    "internal/descopts",
+    "internal/detrand",
+    "internal/encoding/defval",
+    "internal/encoding/messageset",
+    "internal/encoding/tag",
+    "internal/encoding/text",
+    "internal/errors",
+    "internal/fieldsort",
+    "internal/filedesc",
+    "internal/filetype",
+    "internal/flags",
+    "internal/genid",
+    "internal/impl",
+    "internal/mapsort",
+    "internal/pragma",
+    "internal/set",
+    "internal/strs",
+    "internal/version",
+    "proto",
+    "reflect/protoreflect",
+    "reflect/protoregistry",
+    "runtime/protoiface",
+    "runtime/protoimpl",
+  ]
+  pruneopts = ""
+  revision = "3f7a61f89bb6813f89d981d1870ed68da0b3c3f1"
+  version = "v1.25.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/PuerkitoBio/goquery",
     "github.com/aws/aws-lambda-go/events",
     "github.com/aws/aws-lambda-go/lambda",
     "github.com/aws/aws-sdk-go/aws",
     "github.com/aws/aws-sdk-go/aws/session",
     "github.com/aws/aws-sdk-go/service/rekognition",
+    "github.com/dghubble/go-twitter/twitter",
     "github.com/gainings/pixela-go-client",
+    "golang.org/x/oauth2",
+    "golang.org/x/oauth2/clientcredentials",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

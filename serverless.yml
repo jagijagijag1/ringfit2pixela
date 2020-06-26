@@ -6,7 +6,7 @@ service: ringfit2pixela
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
-frameworkVersion: '>=1.28.0 <2.0.0'
+frameworkVersion: ">=1.28.0 <2.0.0"
 
 provider:
   name: aws
@@ -42,4 +42,6 @@ functions:
       PIXELA_ACTTIME_GRAPH: <your-graph-id>
       PIXELA_CAL_GRAPH: <your-graph-id>
       PIXELA_DIST_GRAPH: <your-graph-id>
+      TWITTER_CONSUMER_KEY: <your-twitter-consumer-api-key>
+      TWITTER_CONSUMER_SECRET_KEY: <your-twitter-consumer-api-secret-key>
     timeout: 60
