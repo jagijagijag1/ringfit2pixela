@@ -22,6 +22,7 @@ cd ringfit2pixela
 ```
 
 Describe your pixela info to `environment` clause on `serverless.yml`.
+Note that this app requires Twitter API key & secret due to the specification change on a tweet page.
 
 ```yaml:serverless.yml
 ...
@@ -39,6 +40,8 @@ functions:
       PIXELA_USER: <user-id>
       PIXELA_TOKEN: <your-token>
       PIXELA_GRAPH: <your-graph-id-1>
+      TWITTER_CONSUMER_KEY: <your-twitter-consumer-api-key>
+      TWITTER_CONSUMER_SECRET_KEY: <your-twitter-consumer-api-secret-key>
     timeout: 60
 ```
 
